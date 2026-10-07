@@ -1,313 +1,1461 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Someone A Little Special... 🌸</title>
+
+<title>For Mahi ❤️</title>
 
 <style>
+
+/* ==============================
+   RESET
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
 body{
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(135deg,#ff6fa5,#ff9ec4);
-  color:#fff;
-  text-align:center;
-  overflow:hidden;
+    width:100%;
+    height:100%;
 }
 
-/* STEPS */
-.step{
-  min-height:100vh;
-  display:none;
-  padding:40px 20px;
-  box-sizing:border-box;
-  animation:fade 1s ease;
-}
-.step.active{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-@keyframes fade{
-  from{opacity:0;transform:translateY(30px);}
-  to{opacity:1;transform:translateY(0);}
+body{
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5f9e,
+            #ffb0ca
+        );
+
+    color:white;
 }
 
-button{
-  margin-top:25px;
-  padding:14px 34px;
-  font-size:18px;
-  border:none;
-  border-radius:30px;
-  background:#fff;
-  color:#ff4d8d;
-  cursor:pointer;
+
+/* ==============================
+   PAGES
+================================ */
+
+.page{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:25px;
+
+    text-align:center;
+
 }
 
-/* HEARTS */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:float 6s linear infinite;
-}
-@keyframes float{
-  from{transform:translateY(0);opacity:1;}
-  to{transform:translateY(-120vh);opacity:0;}
+.page.active{
+    display:flex;
 }
 
-/* PHOTO FLIP */
-.photo-box{
-  width:280px;
-  height:360px;
-  perspective:1000px;
-  margin:20px 0;
-}
-.photo-inner{
-  width:100%;
-  height:100%;
-  position:relative;
-  transition:transform 0.8s;
-  transform-style:preserve-3d;
-}
-.photo-box.show .photo-inner{
-  transform:rotateY(180deg);
-}
-.photo-front,.photo-back{
-  position:absolute;
-  inset:0;
-  backface-visibility:hidden;
-  border-radius:20px;
-  overflow:hidden;
-}
-.photo-front img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.photo-back{
-  background:rgba(255,77,141,0.95);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  font-size:16px;
-  line-height:1.6;
-  transform:rotateY(180deg);
+
+/* ==============================
+   INTRO
+================================ */
+
+.intro-title{
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+    animation:
+        titleIn 1s ease;
+
 }
 
-/* NO BUTTON */
-#no{
-  position:absolute;
-  background:#ff2e63;
-  color:white;
+.intro-text{
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    margin-bottom:5px;
+
 }
 
-/* GIFT */
-#gift{
-  font-size:90px;
-  display:none;
-}
-.open{
-  animation:pop 1s ease;
-}
-@keyframes pop{
-  0%{transform:scale(0.5);}
-  60%{transform:scale(1.2);}
-  100%{transform:scale(1);}
+@keyframes titleIn{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
-/* FLOWERS */
-.flower{
-  position:fixed;
-  top:-20px;
-  font-size:22px;
-  animation:fall 5s linear infinite;
-}
-@keyframes fall{
-  from{transform:translateY(0);opacity:1;}
-  to{transform:translateY(120vh);opacity:0;}
+
+/* ==============================
+   BUTTON
+================================ */
+
+.btn{
+
+    margin-top:25px;
+
+    padding:
+        14px 34px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:white;
+
+    color:#ff4385;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.18);
+
+    transition:.25s;
+
 }
 
-/* LETTER */
+.btn:active{
+
+    transform:scale(.94);
+
+}
+
+
+/* ==============================
+   QUESTION
+================================ */
+
+.question{
+
+    font-size:28px;
+
+    line-height:1.4;
+
+    margin-bottom:10px;
+
+}
+
+.question-small{
+
+    font-size:16px;
+
+    opacity:.9;
+
+}
+
+
+/* ==============================
+   NO BUTTON
+================================ */
+
+#noBtn{
+
+    position:fixed;
+
+    background:#ff174f;
+
+    color:white;
+
+    z-index:100;
+
+}
+
+
+/* ==============================
+   ENVELOPE
+================================ */
+
+.envelope-wrapper{
+
+    width:320px;
+
+    max-width:90vw;
+
+    margin-top:25px;
+
+    cursor:pointer;
+
+}
+
+.envelope{
+
+    position:relative;
+
+    width:100%;
+
+    height:210px;
+
+    background:#f8d7df;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.25);
+
+}
+
+
+/* Envelope bottom */
+
+.envelope::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:0;
+
+    height:0;
+
+    border-left:
+        160px solid transparent;
+
+    border-right:
+        160px solid transparent;
+
+    border-bottom:
+        120px solid #efb9c8;
+
+}
+
+
+/* Envelope flap */
+
+.envelope::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:0;
+
+    height:0;
+
+    border-left:
+        160px solid transparent;
+
+    border-right:
+        160px solid transparent;
+
+    border-top:
+        125px solid #e8aebe;
+
+    transform-origin:top;
+
+    transition:
+        transform .8s ease;
+
+}
+
+
+/* Envelope open */
+
+.envelope-wrapper.open
+.envelope::after{
+
+    transform:
+        rotateX(180deg);
+
+}
+
+
+/* Seal */
+
+.seal{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:50%;
+
+    background:#d6336c;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:26px;
+
+    z-index:5;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.2);
+
+}
+
+
+/* ==============================
+   LETTER PAGE
+================================ */
+
+.letter-page{
+
+    overflow-y:auto;
+
+}
+
+
+/* ==============================
+   LETTER
+================================ */
+
 .letter{
-  background:#fff;
-  color:#000;
-  border-radius:18px;
-  padding:22px;
-  width:300px;
-}
-.letter img{
-  width:100%;
-  border-radius:14px;
-  margin-top:15px;
+
+    position:relative;
+
+    width:92%;
+
+    max-width:430px;
+
+    max-height:78vh;
+
+    overflow-y:auto;
+
+    padding:
+        32px 27px 35px;
+
+    background:#fffaf0;
+
+    color:#4b3035;
+
+    text-align:left;
+
+    border-radius:4px;
+
+    box-shadow:
+        0 18px 50px
+        rgba(0,0,0,.3);
+
+    transform:
+        rotate(-1deg);
+
+    animation:
+        letterOpen 1s ease;
+
 }
 
-/* ANGRY JUMP */
-@keyframes jump{
-  0%{transform:translate(-50%,-50%) scale(0.5);}
-  50%{transform:translate(-50%,-60%) scale(1.2);}
-  100%{transform:translate(-50%,-50%) scale(1);}
+
+/* Paper lines */
+
+.letter::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        repeating-linear-gradient(
+            transparent,
+            transparent 30px,
+            rgba(200,120,130,.12) 31px
+        );
+
 }
+
+
+/* Letter content */
+
+.letter-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+/* Heading */
+
+.letter-heading{
+
+    text-align:center;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:28px;
+
+    color:#c73868;
+
+    margin-bottom:25px;
+
+}
+
+
+/* Dear */
+
+.dear{
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:20px;
+
+    margin-bottom:18px;
+
+}
+
+
+/* Letter text */
+
+.letter p{
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    margin-bottom:15px;
+
+}
+
+
+/* Highlight */
+
+.highlight{
+
+    text-align:center;
+
+    font-size:20px !important;
+
+    color:#c73868;
+
+    font-weight:bold;
+
+    margin:
+        25px 0 !important;
+
+}
+
+
+/* Final question */
+
+.final-question{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    font-family:
+        Georgia,
+        serif;
+
+    color:#c73868;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    line-height:1.5;
+
+}
+
+
+/* Signature */
+
+.signature{
+
+    margin-top:25px;
+
+    text-align:right;
+
+    font-family:
+        "Brush Script MT",
+        cursive;
+
+    font-size:25px;
+
+    color:#c73868;
+
+}
+
+
+/* Heart */
+
+.big-heart{
+
+    text-align:center;
+
+    font-size:42px;
+
+    margin-top:15px;
+
+}
+
+
+/* Letter animation */
+
+@keyframes letterOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(50px)
+            rotate(-3deg)
+            scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotate(-1deg)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==============================
+   ROSES
+================================ */
+
+.rose{
+
+    position:fixed;
+
+    top:-40px;
+
+    pointer-events:none;
+
+    z-index:20;
+
+    animation:
+        roseFall
+        5s
+        linear
+        forwards;
+
+}
+
+@keyframes roseFall{
+
+    from{
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translateY(115vh)
+            rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==============================
+   HEARTS
+================================ */
+
+.heart{
+
+    position:fixed;
+
+    bottom:-40px;
+
+    pointer-events:none;
+
+    z-index:10;
+
+    animation:
+        heartFloat
+        6s
+        linear
+        forwards;
+
+}
+
+@keyframes heartFloat{
+
+    from{
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+            translateY(-115vh)
+            scale(1.4);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==============================
+   TRY AGAIN
+================================ */
+
+.tryAgain{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    z-index:999;
+
+    animation:
+        tryAnimation
+        .8s
+        ease
+        forwards;
+
+}
+
+@keyframes tryAnimation{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.5);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-65%)
+            scale(1.2);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==============================
+   MOBILE
+================================ */
+
+@media(max-width:500px){
+
+    .intro-title{
+        font-size:28px;
+    }
+
+    .question{
+        font-size:24px;
+    }
+
+    .envelope{
+        height:190px;
+    }
+
+    .envelope::before{
+
+        border-left-width:
+            calc(45vw - 25px);
+
+        border-right-width:
+            calc(45vw - 25px);
+
+    }
+
+    .envelope::after{
+
+        border-left-width:
+            calc(45vw - 25px);
+
+        border-right-width:
+            calc(45vw - 25px);
+
+    }
+
+    .letter{
+
+        width:94%;
+
+        padding:
+            28px 22px 30px;
+
+    }
+
+    .letter-heading{
+        font-size:25px;
+    }
+
+    .letter p{
+        font-size:15.5px;
+        line-height:1.8;
+    }
+
+}
+
+
+/* ==============================
+   SCROLLBAR
+================================ */
+
+.letter::-webkit-scrollbar{
+    width:4px;
+}
+
+.letter::-webkit-scrollbar-thumb{
+    background:#d8899e;
+    border-radius:10px;
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- BACKGROUND MUSIC -->
-<audio id="bgm" loop>
-  <source src="https://www.dropbox.com/scl/fi/f902mnbtj2eotpojnseqw/KAUN-TUJHE-KoshalWorld.Com.mp3?raw=1">
-</audio>
 
-<!-- HEARTBEAT -->
-<audio id="beat">
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3c77d1f0e3.mp3">
-</audio>
+<!-- =================================================
+     PAGE 1
+================================================= -->
 
-<!-- STEP 1 -->
-<div class="step active">
-  <h2>Hey Motuuu ❤️</h2>
-  <p>Happy Valentine’s Day</p>
-  <button onclick="next()">Start</button>
-</div>
+<div
+    id="page1"
+    class="page active"
+>
 
-<!-- PHOTO 1 -->
-<div class="step">
-  <div class="photo-box" onclick="reveal(this)">
-    <div class="photo-inner">
-      <div class="photo-front">
-        <img src="https://i.postimg.cc/66C7Ysgy/019AABF7_5363_4DF7_9D9F_6DAEDAFAEB12.jpg">
-      </div>
-      <div class="photo-back">
-        Motuuu ❤️ tu meri sabse pyaari feeling hai.
-      </div>
+    <div class="intro-title">
+
+        Hey Mahi ❤️
+
     </div>
-  </div>
-  <button onclick="next()">Next</button>
-</div>
 
-<!-- PHOTO 2 -->
-<div class="step">
-  <div class="photo-box" onclick="reveal(this)">
-    <div class="photo-inner">
-      <div class="photo-front">
-        <img src="https://i.postimg.cc/ncZXWRf1/4157BC28_9F98_4E01_8092_2929EF84FBC2.jpg">
-      </div>
-      <div class="photo-back">
-        Teri smile meri saari pareshaani khatam kar deti hai 💕
-      </div>
+
+    <div class="intro-text">
+
+        Tumhare liye ek chhoti si cheez hai…
+
+        <br>
+
+        Shayad tumhe achhi lage. 👀🌷
+
     </div>
-  </div>
-  <button onclick="next()">Next</button>
+
+
+    <button
+        class="btn"
+        onclick="startLetter()"
+    >
+
+        Open It 💌
+
+    </button>
+
 </div>
 
-<!-- PHOTO 3 -->
-<div class="step">
-  <div class="photo-box" onclick="reveal(this)">
-    <div class="photo-inner">
-      <div class="photo-front">
-        <img src="https://i.postimg.cc/WbndcGsy/88152F36_A649_4E59_8F59_0ABFD3F6DD85.jpg">
-      </div>
-      <div class="photo-back">
-        Tu meri aadat hai motuuu 🧿
-      </div>
+
+
+<!-- =================================================
+     PAGE 2
+================================================= -->
+
+<div
+    id="page2"
+    class="page"
+>
+
+    <div class="question">
+
+        Mahi,
+
+        <br>
+
+        WILL YOU STAY
+        <br>
+        A LITTLE LONGER? 🌷
+
     </div>
-  </div>
-  <button onclick="next()">Next</button>
+
+
+    <div class="question-small">
+
+        Bas ek honest answer chahiye… ❤️
+
+    </div>
+
+
+    <button
+        class="btn"
+        onclick="yes()"
+    >
+
+        HAA ❤️
+
+    </button>
+
+
+    <button
+        id="noBtn"
+        class="btn"
+        onmouseenter="moveNo()"
+        ontouchstart="moveNo()"
+    >
+
+        NHI 😠
+
+    </button>
+
 </div>
 
-<!-- VALENTINE -->
-<div class="step">
-  <h2>Will you be my Valentine? 💍</h2>
-  <button onclick="yes()">HAA ❤️</button>
-  <button id="no" onmouseover="moveNo()">NHI 😠</button>
-</div>
 
-<!-- LETTER -->
-<div class="step" id="letterStep">
-  <div id="gift">🎁</div>
-  <div class="letter">
+
+<!-- =================================================
+     PAGE 3 — ENVELOPE
+================================================= -->
+
+<div
+    id="page3"
+    class="page"
+>
+
+    <div class="intro-title">
+
+        Mahi, This Is For You 💌
+
+    </div>
+
+
     <p>
-      Motuuu ❤️,<br><br>
-      Main perfect nahi hoon, par jab tum saath hoti ho na,
-      tab lagta hai sab theek ho jaata hai.
-      Tum meri himmat ho, meri aadat ho,
-      aur meri har dua ka sabse pyaara jawaab ho.
-      Chahe kuch bhi ho jaaye,
-      main har din tumhe hi choose karunga.
-      Hamesha. ❤️
+
+        Maine kuch likha hai…
+
+        <br>
+
+        Dil se. ❤️
+
+        <br>
+
+        Envelope open karo 🌷
+
     </p>
-    <img src="https://i.postimg.cc/qM0NFbH8/E5F3061B_D2FF_4287_97BA_EA2E544ABC21.jpg">
-  </div>
+
+
+    <div
+        class="envelope-wrapper"
+        id="envelope"
+        onclick="openEnvelope()"
+    >
+
+        <div class="envelope">
+
+            <div class="seal">
+
+                ❤️
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+
+
+<!-- =================================================
+     PAGE 4 — PROPOSAL LETTER
+================================================= -->
+
+<div
+    id="page4"
+    class="page letter-page"
+>
+
+
+    <div class="letter">
+
+
+        <div class="letter-content">
+
+
+            <div class="letter-heading">
+
+                For Mahi 🌷
+
+            </div>
+
+
+            <div class="dear">
+
+                Dear Mahi, ❤️
+
+            </div>
+
+
+            <p>
+
+                I honestly didn't know how to say this…
+
+                <br>
+
+                Isliye socha ki shayad likh kar
+                kehna thoda easier hoga.
+
+            </p>
+
+
+            <p>
+
+                Pata nahi exactly kab…
+
+                <br>
+
+                But somewhere between our conversations,
+                random talks, stupid jokes and those
+                little moments…
+
+                <br>
+
+                tum mere liye thodi si special ban gayi.
+
+            </p>
+
+
+            <p>
+
+                Tumse baat karna genuinely achha lagta hai.
+
+                <br>
+
+                Kabhi kabhi bina kisi reason ke bhi
+                tumse baat karne ka mann karta hai. 🙃
+
+            </p>
+
+
+            <p>
+
+                Aur honestly…
+
+                <br>
+
+                mujhe khud nahi pata ki ye kab
+                friendship se thoda zyada feel hone laga.
+
+            </p>
+
+
+            <p class="highlight">
+
+                Mahi, I really like talking to you. ❤️
+
+            </p>
+
+
+            <p>
+
+                Shayad main ye sab directly kabhi
+                properly bol nahi pata…
+
+                <br>
+
+                Isliye aaj ek letter ke through
+                keh raha hoon.
+
+            </p>
+
+
+            <p>
+
+                I don't know what the future looks like.
+
+                <br>
+
+                I don't even want to rush anything.
+
+                <br>
+
+                Bas itna pata hai ki…
+
+                <br>
+
+                I want to know you better.
+
+                <br>
+
+                I want more conversations,
+                more stupid jokes,
+                more random moments…
+
+                <br>
+
+                and maybe…
+
+                <br>
+
+                something a little more than that. 🌷
+
+            </p>
+
+
+            <p class="highlight">
+
+                I don't want to force anything.
+
+                <br>
+
+                I just wanted to be honest
+                about how I feel.
+
+            </p>
+
+
+            <p>
+
+                So Mahi…
+
+                <br>
+
+                here's the question I've been
+                wanting to ask you.
+
+            </p>
+
+
+            <div class="final-question">
+
+                Will you let me
+                <br>
+
+                stay a little closer
+                <br>
+
+                in your life? ❤️
+
+            </div>
+
+
+            <div class="big-heart">
+
+                ❤️
+
+            </div>
+
+
+            <div class="signature">
+
+                — Someone who
+                <br>
+
+                really likes having you around. 🌸
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
 
 <script>
-let s=0;
-const steps=document.querySelectorAll(".step");
-const music=document.getElementById("bgm");
-const beat=document.getElementById("beat");
 
-function next(){
-  steps[s].classList.remove("active");
-  s++;
-  steps[s].classList.add("active");
-  music.volume=0.25;
-  music.play();
+
+/* =================================================
+   START
+================================================= */
+
+function startLetter(){
+
+    document
+        .getElementById("page1")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("page2")
+        .classList.add("active");
+
 }
 
-function reveal(box){
-  box.classList.toggle("show");
-  beat.currentTime=0;
-  beat.play();
-}
 
-function moveNo(){
-  const no=document.getElementById("no");
-  no.style.left=Math.random()*70+"vw";
-  no.style.top=Math.random()*70+"vh";
 
-  const angry=document.createElement("div");
-  angry.innerHTML="😤 Try Again!";
-  angry.style.position="fixed";
-  angry.style.left="50%";
-  angry.style.top="50%";
-  angry.style.fontSize="24px";
-  angry.style.animation="jump 0.8s";
-  document.body.appendChild(angry);
-  setTimeout(()=>angry.remove(),800);
-}
+/* =================================================
+   YES
+================================================= */
 
 function yes(){
-  steps[s].classList.remove("active");
-  document.getElementById("letterStep").classList.add("active");
-  const gift=document.getElementById("gift");
-  gift.style.display="block";
-  gift.classList.add("open");
-  flowerRain();
+
+    document
+        .getElementById("page2")
+        .classList.remove("active");
+
+
+    document
+        .getElementById("page3")
+        .classList.add("active");
+
 }
 
-function flowerRain(){
-  setInterval(()=>{
-    const f=document.createElement("div");
-    f.className="flower";
-    f.innerHTML="🌹";
-    f.style.left=Math.random()*100+"vw";
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),5000);
-  },200);
+
+
+/* =================================================
+   OPEN ENVELOPE
+================================================= */
+
+function openEnvelope(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+
+    envelope.classList.add("open");
+
+
+    setTimeout(
+
+        function(){
+
+            document
+                .getElementById("page3")
+                .classList.remove("active");
+
+
+            document
+                .getElementById("page4")
+                .classList.add("active");
+
+
+            startRoses();
+
+        },
+
+        900
+
+    );
+
 }
 
-/* HEARTS */
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},300);
+
+
+/* =================================================
+   NO BUTTON
+================================================= */
+
+function moveNo(){
+
+    const button =
+        document.getElementById("noBtn");
+
+
+    const maxX =
+        window.innerWidth -
+        button.offsetWidth -
+        20;
+
+
+    const maxY =
+        window.innerHeight -
+        button.offsetHeight -
+        20;
+
+
+    const x =
+        Math.max(
+            10,
+            Math.random() * maxX
+        );
+
+
+    const y =
+        Math.max(
+            10,
+            Math.random() * maxY
+        );
+
+
+    button.style.left =
+        x + "px";
+
+
+    button.style.top =
+        y + "px";
+
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "tryAgain";
+
+
+    message.innerHTML =
+        "😤 Try Again!";
+
+
+    document.body.appendChild(
+        message
+    );
+
+
+    setTimeout(
+
+        function(){
+
+            message.remove();
+
+        },
+
+        800
+
+    );
+
+}
+
+
+
+/* =================================================
+   ROSE RAIN
+================================================= */
+
+let rosesStarted = false;
+
+
+function startRoses(){
+
+    if(rosesStarted){
+        return;
+    }
+
+
+    rosesStarted = true;
+
+
+    setInterval(
+
+        function(){
+
+            const rose =
+                document.createElement("div");
+
+
+            rose.className =
+                "rose";
+
+
+            rose.innerHTML =
+                "🌹";
+
+
+            rose.style.left =
+                Math.random() *
+                100 +
+                "vw";
+
+
+            rose.style.fontSize =
+                (
+                    18 +
+                    Math.random() * 16
+                ) +
+                "px";
+
+
+            rose.style.animationDuration =
+                (
+                    4 +
+                    Math.random() * 3
+                ) +
+                "s";
+
+
+            document.body.appendChild(
+                rose
+            );
+
+
+            setTimeout(
+
+                function(){
+
+                    rose.remove();
+
+                },
+
+                7000
+
+            );
+
+        },
+
+        250
+
+    );
+
+}
+
+
+
+/* =================================================
+   FLOATING HEARTS
+================================================= */
+
+setInterval(
+
+    function(){
+
+        const heart =
+            document.createElement("div");
+
+
+        heart.className =
+            "heart";
+
+
+        heart.innerHTML =
+            "❤️";
+
+
+        heart.style.left =
+            Math.random() *
+            100 +
+            "vw";
+
+
+        heart.style.fontSize =
+            (
+                15 +
+                Math.random() * 15
+            ) +
+            "px";
+
+
+        document.body.appendChild(
+            heart
+        );
+
+
+        setTimeout(
+
+            function(){
+
+                heart.remove();
+
+            },
+
+            6500
+
+        );
+
+    },
+
+    450
+
+);
+
 </script>
 
+
 </body>
+
 </html>
